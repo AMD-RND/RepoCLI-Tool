@@ -26,3 +26,19 @@ def load_commits_from_csv(filepath):
                 "new_commit": row["new_commit"].strip(),
             })
     return commits
+
+
+import json
+import pandas as pd
+
+def save_results_json(results, filepath):
+    """Save results list to JSON file."""
+    with open(filepath, "w", encoding="utf-8") as f:
+        json.dump(results, f, indent=4)
+    print(f"💾 Results saved to {filepath}")
+
+def save_results_csv(results, filepath):
+    """Save results list to CSV file."""
+    df = pd.DataFrame(results)
+    df.to_csv(filepath, index=False)
+    print(f"💾 Results saved to {filepath}")
