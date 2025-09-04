@@ -52,7 +52,8 @@
             "docker-compose.yml",
             "frontend/script.js"
         ],
-        "files_removed": []
+        "files_removed": [],
+        "error": null
     },
     {
         "repo": "shivamsingh163248/E-Ecommerce-Web-app",
@@ -71,7 +72,8 @@
         ],
         "files_added": [],
         "files_modified": [],
-        "files_removed": []
+        "files_removed": [],
+        "error": null
     },
     {
         "repo": "shivamsingh163248/k8sforbeginners",
@@ -99,7 +101,8 @@
         "files_modified": [
             "k8s/labs/basics/apache_service.yaml"
         ],
-        "files_removed": []
+        "files_removed": [],
+        "error": null
     },
     {
         "repo": "shivamsingh163248/python_learning_colab",
@@ -111,7 +114,8 @@
         "commit_messages": [],
         "files_added": [],
         "files_modified": [],
-        "files_removed": []
+        "files_removed": [],
+        "error": null
     },
     {
         "repo": "shivamsingh163248/IIT-Ropar-Minor-in-AI",
@@ -129,6 +133,7 @@
             "IIT_Ropar_Minor_in_AI/VideoLacture/TH_W3L3_Mastering_the_Basics_Searching.ipynb",
             "Numpy/Numpy.ipynb"
         ],
-        "files_removed": []
+        "files_removed": [],
+        "error": null
     }
 ]
