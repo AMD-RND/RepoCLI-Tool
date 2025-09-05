@@ -4,3 +4,11 @@ python-multipart
 requests
 pandas
 rich
+
+fastapi
+uvicorn[standard]
+python-multipart
+requests
+pandas
+rich
+

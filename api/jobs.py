@@ -20,3 +20,9 @@ def read_meta(job_id: str) -> dict:
 
 def meta_exists(job_id: str) -> bool:
     return (job_path(job_id) / "meta.json").exists()
+
+def summary_path(job_id: str) -> Path:
+    return job_path(job_id) / "summary.json"
+
+def csv_path(job_id: str) -> Path:
+    return job_path(job_id) / "summary.csv"

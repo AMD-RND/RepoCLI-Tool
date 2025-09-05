@@ -12,3 +12,4 @@ class JobMeta(BaseModel):
     status: str
     count: Optional[int] = None
     error: Optional[str] = None
+
