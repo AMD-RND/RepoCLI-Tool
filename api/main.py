@@ -1,3 +1,4 @@
+from fastapi.responses import FileResponse
 # api/main.py
 import os
 import uuid
@@ -131,3 +132,11 @@ def get_repo(job_id: str, repo_name: str):
             return JSONResponse(status_code=200, content=r)
 
     raise HTTPException(status_code=404, detail="repo not found in job results")
+
+# Serve summary.csv for a job
+@app.get("/jobs/{job_id}/summary.csv")
+def download_csv(job_id: str):
+    path = csv_path(job_id)
+    if not path.exists():
+        raise HTTPException(status_code=404, detail="csv not found")
+    return FileResponse(path, media_type="text/csv", filename=f"{job_id}_summary.csv")

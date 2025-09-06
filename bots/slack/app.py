@@ -181,46 +181,13 @@ def handle_file_shared(event, client, logger):
 
         job_id = api_resp.get("job_id")
         status = api_resp.get("status", "unknown")
-        client.chat_update(channel=channel_id, ts=ack_ts, text=f"Job created: `{job_id}` (status: {status}). I will post summary when finished.")
-
-        # If finished right away, fetch and post results; otherwise poll until finished (naive)
-        if status == "finished":
-            try:
-                summary = fetch_summary(job_id)
-                results = summary.get("results", [])
-                compact = compact_results_text(results)
-                client.chat_postMessage(channel=channel_id, text=f"Summary for `{job_id}`:\n{compact}")
-            except Exception as e:
-                logger.exception("Failed to fetch immediate summary")
-                client.chat_postMessage(channel=channel_id, text=f"Job `{job_id}` finished but failed to fetch summary: {e}")
-            return
-
-        # queued -> poll for completion (simple approach)
-        try:
-            summary = fetch_summary(job_id)
-        except TimeoutError:
-            client.chat_postMessage(channel=channel_id, text=f"Job `{job_id}` is still running. I'll DM you when finished.")
-            # optionally DM user to avoid channel spam
-            if user_id:
-                try:
-                    client.chat_postMessage(channel=user_id, text=f"Your job `{job_id}` is still running. Please check /summary later.")
-                except Exception:
-                    pass
-            return
-        except Exception as e:
-            logger.exception("Failed to get summary")
-            client.chat_postMessage(channel=channel_id, text=f"Failed to fetch summary for `{job_id}`: {e}")
-            return
-
-        # Post compact summary in channel (or DM for large)
-        results = summary.get("results", [])
-        compact = compact_results_text(results)
-        # if many repos, DM the user instead of channel
-        if len(results) > 8 and user_id:
-            client.chat_postMessage(channel=user_id, text=f"Summary for `{job_id}` (DM):\n{compact}")
-            client.chat_postMessage(channel=channel_id, text=f"Job `{job_id}` finished — summary DM'd to <@{user_id}>.")
-        else:
-            client.chat_postMessage(channel=channel_id, text=f"Summary for `{job_id}`:\n{compact}")
+        client.chat_update(
+            channel=channel_id,
+            ts=ack_ts,
+            text=f"Job created: `{job_id}` (status: {status}). The API will post results to Slack when finished."
+        )
+        # No polling; API will send final message via webhook
+        return
 
     except Exception as e:
         logger.exception("Unhandled error in file_shared handler")

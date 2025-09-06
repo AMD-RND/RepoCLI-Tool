@@ -45,6 +45,15 @@ def run_job_sync(job_id: str, commits: list, github_token=None):
     write_meta(job_id, {"job_id": job_id, "status": "finished", "count": len(results)})
     save_results_json(results, str(p / "summary.json"))
     save_results_csv(results, str(p / "summary.csv"))
+
+    # notify Slack via incoming webhook (if configured)
+    try:
+        from .notify import post_to_slack_webhook
+        post_to_slack_webhook(job_id, results)
+    except Exception as e:
+        # don't fail the job for notification errors; log or ignore
+        print(f"Slack notification failed: {e}")
+
     return results
 
 def run_job_background(job_id: str, commits: list, github_token=None):
