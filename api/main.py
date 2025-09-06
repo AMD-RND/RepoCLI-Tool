@@ -1,3 +1,4 @@
+from .share import router as share_router, SHARE_PATH
 from fastapi.responses import FileResponse
 # api/main.py
 import os
@@ -17,6 +18,7 @@ from .auth import require_api_key
 from cli_tool.utils import load_commits_from_csv, save_results_json, save_results_csv
 
 app = FastAPI(title="Repo Diff Bot API")
+app.include_router(share_router, prefix=SHARE_PATH)
 
 # CORS - allow all for local/dev. Narrow in production.
 app.add_middleware(

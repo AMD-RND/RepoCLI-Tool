@@ -1,17 +1,34 @@
 # api/notify.py
 import os
 import requests
-from typing import List
+from typing import List, Optional
 
-SLACK_INCOMING_WEBHOOK = os.getenv("SLACK_INCOMING_WEBHOOK")  # e.g. https://hooks.slack.com/services/XXX/YYY/ZZZ
-API_BASE_URL = os.getenv("REPODIFF_PUBLIC_URL", "http://127.0.0.1:8000")  # public URL for links
+# The public URL where your API is reachable (used to build links)
+# Set REPODIFF_PUBLIC_URL env var in production (e.g. https://repodiff.example.com)
+REPODIFF_PUBLIC_URL = os.getenv("REPODIFF_PUBLIC_URL", "http://127.0.0.1:8000")
+# Slack incoming webhook URL (create in Slack, see instructions below)
+SLACK_INCOMING_WEBHOOK = os.getenv("SLACK_INCOMING_WEBHOOK", None)
 
-def make_compact_block_for_results(job_id: str, results: List[dict], max_repos=6):
+# Import the share helper lazily to avoid circular imports
+def _make_share_link(job_id: str, ttl_seconds: int = 3600) -> Optional[str]:
     """
-    Build Slack Blocks: header, few repo lines, link to full details.
+    Return a signed one-time link (URL) to view job summary JSON.
+    This uses the /share/<token> endpoint which must be mounted in your FastAPI app.
+    """
+    try:
+        from .share import create_signed_token, SHARE_PATH
+        token = create_signed_token(job_id, ttl_seconds=ttl_seconds)
+        return f"{REPODIFF_PUBLIC_URL.rstrip('/')}{SHARE_PATH}/{token}"
+    except Exception:
+        return None
+
+def make_compact_block_for_results(job_id: str, results: List[dict], max_repos: int = 6):
+    """
+    Build Slack Block Kit payload with summary + link to full results.
     """
     blocks = []
-    blocks.append({"type": "section", "text": {"type": "mrkdwn", "text": f"*RepoDiff job finished* — `<{API_BASE_URL}/summary?job_id={job_id}|Open results>`"}})
+    header_text = f"*RepoDiff job finished* — <{REPODIFF_PUBLIC_URL}/summary?job_id={job_id}|Open results (API)>"
+    blocks.append({"type": "section", "text": {"type": "mrkdwn", "text": header_text}})
     blocks.append({"type": "divider"})
 
     count = 0
@@ -30,30 +47,36 @@ def make_compact_block_for_results(job_id: str, results: List[dict], max_repos=6
         if removed: filesummary.append(f"-{removed}")
         filesummary_text = " ".join(filesummary) if filesummary else "no file changes"
 
-        # one repo per section
-        text = f"*{repo}* — commits: {commits} — {filesummary_text}\n<{API_BASE_URL}/repo/{repo}?job_id={job_id}|View details>"
-        blocks.append({"type":"section", "text":{"type":"mrkdwn", "text": text}})
+        # use a view-details link pointing to /repo endpoint (users may need to be authenticated)
+        repo_encoded = repo.replace("/", "%2F")
+        details_link = f"{REPODIFF_PUBLIC_URL}/repo/{repo_encoded}?job_id={job_id}"
+        text = f"*{repo}* — commits: {commits} — {filesummary_text}\n<{details_link}|View details>"
+        blocks.append({"type": "section", "text": {"type": "mrkdwn", "text": text}})
         count += 1
 
-    # actions: link to JSON and download CSV
-    blocks.append({"type":"divider"})
-    actions = {
-        "type":"actions",
-        "elements":[
-            {"type":"button","text":{"type":"plain_text","text":"Open full results"},"url": f"{API_BASE_URL}/summary?job_id={job_id}"},
-            {"type":"button","text":{"type":"plain_text","text":"Download CSV"},"url": f"{API_BASE_URL}/jobs/{job_id}/summary.csv"}
-        ]
-    }
+    blocks.append({"type": "divider"})
+
+    # create a short-lived public link for the JSON (if share helper present)
+    public_link = _make_share_link(job_id, ttl_seconds=3600)
+    actions = {"type": "actions", "elements": []}
+    actions["elements"].append({"type": "button", "text": {"type": "plain_text", "text": "Open full results (API)"}, "url": f"{REPODIFF_PUBLIC_URL}/summary?job_id={job_id}"})
+    if public_link:
+        actions["elements"].append({"type": "button", "text": {"type": "plain_text", "text": "Temporary JSON link (1h)"}, "url": public_link})
+    # Always offer CSV download link (will be protected if API requires auth)
+    actions["elements"].append({"type": "button", "text": {"type": "plain_text", "text": "Download CSV"}, "url": f"{REPODIFF_PUBLIC_URL}/jobs/{job_id}/summary.csv"})
     blocks.append(actions)
+
     return {"blocks": blocks}
 
 def post_to_slack_webhook(job_id: str, results: List[dict]):
+    """
+    Post a Block Kit message to the configured incoming webhook.
+    Returns True on success, False if webhook not configured.
+    """
     webhook = SLACK_INCOMING_WEBHOOK
     if not webhook:
-        # no webhook configured — do nothing
         return False
     payload = make_compact_block_for_results(job_id, results)
     resp = requests.post(webhook, json=payload, timeout=10)
-    if resp.status_code >= 300:
-        raise RuntimeError(f"Slack webhook failed: {resp.status_code} {resp.text}")
+    resp.raise_for_status()
     return True
