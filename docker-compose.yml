@@ -1,0 +1,46 @@
+version: "3.8"
+services:
+  redis:
+    image: redis:7
+    restart: unless-stopped
+    ports: ["6379:6379"]
+
+  api:
+    build: ./api
+    environment:
+      - API_KEY=${API_KEY}
+      - GITHUB_TOKEN=${GITHUB_TOKEN}
+      - JOB_DIR=/app/jobs
+      - SYNC_ROW_LIMIT=20
+      - SLACK_INCOMING_WEBHOOK=${SLACK_INCOMING_WEBHOOK}
+      - REPODIFF_PUBLIC_URL=${REPODIFF_PUBLIC_URL}
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/1
+    volumes:
+      - ./jobs:/app/jobs
+    ports:
+      - "8000:8000"
+    depends_on:
+      - redis
+
+  worker:
+    image: python:3.11-slim
+    command: celery -A api.celery_app.celery worker --loglevel=info -Q repo-diff
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/1
+    volumes:
+      - ./:/app
+    working_dir: /app
+
+  slackbot:
+    build:
+      context: .
+      dockerfile: Dockerfile.slack  # create small Dockerfile to run bots/slack/app.py
+    environment:
+      - SLACK_BOT_TOKEN=${SLACK_BOT_TOKEN}
+      - SLACK_APP_TOKEN=${SLACK_APP_TOKEN}
+      - REPODIFF_API_URL=http://api:8000
+      - REPODIFF_API_KEY=${API_KEY}
+    depends_on:
+      - api
