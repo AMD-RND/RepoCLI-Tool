@@ -1,3 +1,5 @@
+from .share import router as share_router, SHARE_PATH
+from fastapi.responses import FileResponse
 # api/main.py
 import os
 import uuid
@@ -16,6 +18,7 @@ from .auth import require_api_key
 from cli_tool.utils import load_commits_from_csv, save_results_json, save_results_csv
 
 app = FastAPI(title="Repo Diff Bot API")
+app.include_router(share_router, prefix=SHARE_PATH)
 
 # CORS - allow all for local/dev. Narrow in production.
 app.add_middleware(
@@ -131,3 +134,11 @@ def get_repo(job_id: str, repo_name: str):
             return JSONResponse(status_code=200, content=r)
 
     raise HTTPException(status_code=404, detail="repo not found in job results")
+
+# Serve summary.csv for a job
+@app.get("/jobs/{job_id}/summary.csv")
+def download_csv(job_id: str):
+    path = csv_path(job_id)
+    if not path.exists():
+        raise HTTPException(status_code=404, detail="csv not found")
+    return FileResponse(path, media_type="text/csv", filename=f"{job_id}_summary.csv")
