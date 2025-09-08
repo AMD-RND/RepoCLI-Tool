@@ -1,7 +1,17 @@
 FROM python:3.11-slim
+
 WORKDIR /app
+
+# Copy whole repo (adjust if you want smaller context)
 COPY . /app
-RUN pip install --upgrade pip
+
+RUN apt-get update && apt-get install -y build-essential gcc \
+    && python -m pip install --upgrade pip
+
+# Install project and bot deps
 RUN pip install -r api/requirements.txt
-RUN pip install discord.py requests
+RUN pip install discord.py aiohttp
+
+ENV PYTHONUNBUFFERED=1
+
 CMD ["python", "bots/discord/app.py"]

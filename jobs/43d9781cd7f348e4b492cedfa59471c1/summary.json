@@ -1,0 +1,211 @@
+[
+    {
+        "repo": "shivamsingh163248/Microservice-admin-apps",
+        "url": "https://github.com/shivamsingh163248/Microservice-admin-apps",
+        "old_commit": "489e0ad4e76169eeb5a5f960472dbd8e76c5244d",
+        "new_commit": "dcc2221aee6637eb1fc6a2899a2b68938cd76219",
+        "compare_url": "https://api.github.com/repos/shivamsingh163248/Microservice-admin-apps/compare/489e0ad4e76169eeb5a5f960472dbd8e76c5244d...dcc2221aee6637eb1fc6a2899a2b68938cd76219",
+        "total_commits": 26,
+        "commit_messages": [
+            "664c6ac | SHIVAM SINGH: \ufffd Comprehensive documentation update: README.md and PULLING.md with complete CI/CD workflows",
+            "3afa308 | SHIVAM SINGH: Merge branch 'Ansible_Workflow' of https://github.com/shivamsingh163248/Microservice-admin-apps into Ansible_Workflow",
+            "11c1d69 | shivamsingh163248: \ud83d\ude80 Update docker-compose.yml to version v1.0.12",
+            "321fbb9 | SHIVAM SINGH: Add ip",
+            "170ba53 | SHIVAM SINGH: Merge branch 'Ansible_Workflow' of https://github.com/shivamsingh163248/Microservice-admin-apps into Ansible_Workflow",
+            "42148c9 | shivamsingh163248: \ud83d\ude80 Update docker-compose.yml to version v1.0.13",
+            "4f661fb | SHIVAM SINGH: fix the iP",
+            "37ce1e4 | SHIVAM SINGH: Merge branch 'Ansible_Workflow' of https://github.com/shivamsingh163248/Microservice-admin-apps into Ansible_Workflow",
+            "58caba9 | shivamsingh163248: \ud83d\ude80 Update docker-compose.yml to version v1.0.14",
+            "bdc19b2 | SHIVAM SINGH: change port of deplyment",
+            "39f8cf7 | SHIVAM SINGH: update the triger poin of the branch",
+            "8ca03de | shivamsingh163248: \ud83d\ude80 Update docker-compose.yml to version v1.0.15",
+            "0b33c82 | SHIVAM SINGH: Merge branch 'Ansible_Workflow_Port' into 4-fix-the-bug-of-port",
+            "8a5869e | SHIVAM SINGH: Merge pull request #5 from shivamsingh163248/4-fix-the-bug-of-port",
+            "ced7123 | shivamsingh163248: \ud83d\ude80 Update docker-compose.yml to version v1.0.16",
+            "113dc5d | SHIVAM SINGH: update",
+            "5a2a0b3 | shivamsingh163248: \ud83d\ude80 Update docker-compose.yml to version v1.0.17",
+            "184985f | SHIVAM SINGH: try fix the issue",
+            "75b3020 | SHIVAM SINGH: Merge branch 'Ansible_Workflow_Port' of https://github.com/shivamsingh163248/Microservice-admin-apps into Ansible_Workflow_Port",
+            "7b0d06f | shivamsingh163248: \ud83d\ude80 Update docker-compose.yml to version v1.0.18",
+            "262eba2 | SHIVAM SINGH: update",
+            "6b76472 | shivamsingh163248: \ud83d\ude80 Update docker-compose.yml to version v1.0.19",
+            "1899991 | SHIVAM SINGH:  Fix CORS and API port configuration for new ports (8081/5001)",
+            "4963f89 | SHIVAM SINGH: Merge branch 'Ansible_Workflow_Port' of https://github.com/shivamsingh163248/Microservice-admin-apps into Ansible_Workflow_Port",
+            "a1e1138 | shivamsingh163248: \ud83d\ude80 Update docker-compose.yml to version v1.0.20",
+            "dcc2221 | SHIVAM SINGH: Merge pull request #7 from shivamsingh163248/Ansible_Workflow_Port"
+        ],
+        "files_added": [],
+        "files_modified": [
+            ".github/workflows/ansible-deploy.yml",
+            "DEPLOYMENT_TROUBLESHOOTING.md",
+            "GITHUB_PACKAGES.md",
+            "PULLING.md",
+            "README.md",
+            "SSH_KEY_SETUP_GUIDE.md",
+            "ansible/README.md",
+            "ansible/deploy-production.yml",
+            "ansible/group_vars/all.yml",
+            "ansible/inventory.ini",
+            "ansible/templates/docker-compose.production.yml.j2",
+            "backend/app.py",
+            "docker-compose.github.yml",
+            "docker-compose.yml",
+            "frontend/script.js"
+        ],
+        "files_removed": [],
+        "error": null
+    },
+    {
+        "repo": "shivamsingh163248/E-Ecommerce-Web-app",
+        "url": "https://github.com/shivamsingh163248/E-Ecommerce-Web-app",
+        "old_commit": "cec7a2337de3d481eb5587ee84cb9e3d3bd02abc",
+        "new_commit": "8d4f635a7140351ec5e32502cc049080020fb86e",
+        "compare_url": "https://api.github.com/repos/shivamsingh163248/E-Ecommerce-Web-app/compare/cec7a2337de3d481eb5587ee84cb9e3d3bd02abc...8d4f635a7140351ec5e32502cc049080020fb86e",
+        "total_commits": 6,
+        "commit_messages": [
+            "0364d23 | SHIVAM SINGH: Revert \"Merge pull request #26 from PRIYESH740/main\"",
+            "f8ff2f2 | SHIVAM SINGH: Revert \"Revert \"Merge pull request #26 from PRIYESH740/main\"\"",
+            "76a8fb5 | SHIVAM SINGH: Merge pull request #28 from shivamsingh163248/child",
+            "c531c73 | SHIVAM SINGH: Merge pull request #29 from shivamsingh163248/shivamsingh163248-patch-1",
+            "48a1dd4 | SHIVAM SINGH: Revert \"Shivamsingh163248 patch 1\"",
+            "8d4f635 | SHIVAM SINGH: Merge pull request #30 from shivamsingh163248/revert-29-shivamsingh163248-patch-1"
+        ],
+        "files_added": [],
+        "files_modified": [],
+        "files_removed": [],
+        "error": null
+    },
+    {
+        "repo": "shivamsingh163248/k8sforbeginners",
+        "url": "https://github.com/shivamsingh163248/k8sforbeginners",
+        "old_commit": "0ae1142e48a981f65dbf3f81f0a287587154e444",
+        "new_commit": "59a13cbc243100e60a2f60c57f38231713c2a0c8",
+        "compare_url": "https://api.github.com/repos/shivamsingh163248/k8sforbeginners/compare/0ae1142e48a981f65dbf3f81f0a287587154e444...59a13cbc243100e60a2f60c57f38231713c2a0c8",
+        "total_commits": 7,
+        "commit_messages": [
+            "0729caa | devopscert202: Create k8s-intro.md",
+            "b229272 | devopscert202: Create yaml-basics.md",
+            "8d2ec13 | devopscert202: Update yaml-basics.md",
+            "535d199 | devopscert202: Create crictl.md",
+            "079e273 | devopscert202: Update apache_service.yaml",
+            "8b7f286 | devopscert202: Create container-basics.md",
+            "59a13cb | devopscert202: Create container.md"
+        ],
+        "files_added": [
+            "k8s/docs/basics/container-basics.md",
+            "k8s/docs/basics/container.md",
+            "k8s/docs/basics/crictl.md",
+            "k8s/docs/basics/k8s-intro.md",
+            "k8s/docs/basics/yaml-basics.md"
+        ],
+        "files_modified": [
+            "k8s/labs/basics/apache_service.yaml"
+        ],
+        "files_removed": [],
+        "error": null
+    },
+    {
+        "repo": "shivamsingh163248/python_learning_colab",
+        "url": "https://github.com/shivamsingh163248/python_learning_colab",
+        "old_commit": "4cf85e24f5db8b31f914db39f5acb58e58b664ab",
+        "new_commit": "4cf85e24f5db8b31f914db39f5acb58e58b664ab",
+        "compare_url": "https://api.github.com/repos/shivamsingh163248/python_learning_colab/compare/4cf85e24f5db8b31f914db39f5acb58e58b664ab...4cf85e24f5db8b31f914db39f5acb58e58b664ab",
+        "total_commits": 0,
+        "commit_messages": [],
+        "files_added": [],
+        "files_modified": [],
+        "files_removed": [],
+        "error": null
+    },
+    {
+        "repo": "shivamsingh163248/IIT-Ropar-Minor-in-AI",
+        "url": "https://github.com/shivamsingh163248/IIT-Ropar-Minor-in-AI",
+        "old_commit": "3b9f24ac59d131d302f9f3cf0531367ed9a4de8c",
+        "new_commit": "db39286487e8306e3eea7ab89c05ceec58d8c68b",
+        "compare_url": "https://api.github.com/repos/shivamsingh163248/IIT-Ropar-Minor-in-AI/compare/3b9f24ac59d131d302f9f3cf0531367ed9a4de8c...db39286487e8306e3eea7ab89c05ceec58d8c68b",
+        "total_commits": 2,
+        "commit_messages": [
+            "32205e2 | SHIVAM SINGH: Created using Colab",
+            "db39286 | SHIVAM SINGH: Created using Colab"
+        ],
+        "files_added": [],
+        "files_modified": [
+            "IIT_Ropar_Minor_in_AI/VideoLacture/TH_W3L3_Mastering_the_Basics_Searching.ipynb",
+            "Numpy/Numpy.ipynb"
+        ],
+        "files_removed": [],
+        "error": null
+    },
+    {
+        "repo": "shivamsingh163248/Coding-Ninjas-Solutions",
+        "url": "https://github.com/shivamsingh163248/Coding-Ninjas-Solutions",
+        "old_commit": "50bfb320e3948d210551992872b89252a87973f3",
+        "new_commit": "3860d3b3d2020b338550dcf2e0d2ede0035257f5",
+        "compare_url": "https://api.github.com/repos/shivamsingh163248/Coding-Ninjas-Solutions/compare/50bfb320e3948d210551992872b89252a87973f3...3860d3b3d2020b338550dcf2e0d2ede0035257f5",
+        "total_commits": 8,
+        "commit_messages": [
+            "56ca846 | SHIVAM SINGH: Created using Colab",
+            "037e935 | SHIVAM SINGH: Delete IIT_Ropar_Minor_in_AI directory",
+            "6d248c8 | SHIVAM SINGH: Created using Colab",
+            "92b881a | SHIVAM SINGH: Delete IIT_Ropar_Minor_in_AI/VideoLacture directory",
+            "9b864f8 | SHIVAM SINGH: Created using Colab",
+            "6c63ca5 | SHIVAM SINGH: Delete IIT_Ropar_Minor_in_AI directory",
+            "c5322f6 | SHIVAM SINGH: Created using Colab",
+            "3860d3b | SHIVAM SINGH: Delete Numpy directory"
+        ],
+        "files_added": [],
+        "files_modified": [],
+        "files_removed": [],
+        "error": null
+    },
+    {
+        "repo": "shivamsingh163248/Health_privacy_app",
+        "url": "https://github.com/shivamsingh163248/Health_privacy_app",
+        "old_commit": "7e7ffe74c11e77cdfaab026bc156c1e78cf883fa",
+        "new_commit": "ce3507d755d7ab8553d89fc98de510c6cd5fef54",
+        "compare_url": "https://api.github.com/repos/shivamsingh163248/Health_privacy_app/compare/7e7ffe74c11e77cdfaab026bc156c1e78cf883fa...ce3507d755d7ab8553d89fc98de510c6cd5fef54",
+        "total_commits": 13,
+        "commit_messages": [
+            "7070ea5 | Saurabh: upate",
+            "25e5c77 | SHIVAM SINGH: Update README.md",
+            "474ba4f | SHIVAM SINGH: Merge pull request #4 from saurabhpatel2442/main",
+            "5c00622 | SHIVAM SINGH: write the gitingone file",
+            "b4aa259 | SHIVAM SINGH: update",
+            "f3a091d | SHIVAM SINGH: update",
+            "ff6d5f9 | SHIVAM SINGH: update",
+            "13c8536 | SHIVAM SINGH: updating the workflow of the docker cloud",
+            "52e548e | SHIVAM SINGH: Update README.md",
+            "94fdc7c | SHIVAM SINGH: Update README.md",
+            "14ab149 | SHIVAM SINGH: Update README.md",
+            "2849e86 | SHIVAM SINGH: adding the workflow of dockerhub",
+            "ce3507d | SHIVAM SINGH: docker comose easly to buid and run the docker images"
+        ],
+        "files_added": [
+            ".github/workflows/DockerHubImagePush.yml",
+            ".github/workflows/build.yml",
+            ".gitignore",
+            "docker-compose.yml",
+            "terraform/.gitignore",
+            "terraform/main.tf",
+            "terraform/variables.tf"
+        ],
+        "files_modified": [
+            "README.md"
+        ],
+        "files_removed": [],
+        "error": null
+    },
+    {
+        "repo": "shivamsingh163248/E-Ecommerce-Web-app",
+        "url": "https://github.com/shivamsingh163248/E-Ecommerce-Web-app",
+        "old_commit": "8d4f635a7140351ec5e32502cc049080020fb86e",
+        "new_commit": "197a1fad040620e7486725e8f16d0402ebdb0313",
+        "compare_url": "https://api.github.com/repos/shivamsingh163248/E-Ecommerce-Web-app/compare/8d4f635a7140351ec5e32502cc049080020fb86e...197a1fad040620e7486725e8f16d0402ebdb0313",
+        "total_commits": 0,
+        "commit_messages": [],
+        "files_added": [],
+        "files_modified": [],
+        "files_removed": [],
+        "error": null
+    }
+]
