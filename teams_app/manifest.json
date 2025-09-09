@@ -1,7 +1,7 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.11/MicrosoftTeams.schema.json",
-  "manifestVersion": "1.11",
-  "version": "1.0.0",
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.23/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.23",
+  "version": "1.0.1",
   "id": "ba8a89d8-b295-4320-8e6d-91d88e65085a",
   "packageName": "com.repodiff.teamsbot",
   "developer": {
