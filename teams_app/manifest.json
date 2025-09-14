@@ -1,18 +1,18 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.23/MicrosoftTeams.schema.json",
-  "manifestVersion": "1.23",
-  "version": "1.0.1",
-  "id": "ba8a89d8-b295-4320-8e6d-91d88e65085a",
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.11/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.11",
+  "version": "1.0.7",
+  "id": "12819db6-b20f-4ce9-88ff-59deec01990f",
   "packageName": "com.repodiff.teamsbot",
   "developer": {
-    "name": "Your Name or Org",
-    "websiteUrl": "https://fd59c923d1c5.ngrok-free.app",
-    "privacyUrl": "https://fd59c923d1c5.ngrok-free.app/privacy",
-    "termsOfUseUrl": "https://fd59c923d1c5.ngrok-free.app/terms"
+    "name": "test-boat",
+    "websiteUrl": "https://2a2059a1f319.ngrok-free.app",
+    "privacyUrl": "https://2a2059a1f319.ngrok-free.app/privacy",
+    "termsOfUseUrl": "https://2a2059a1f319.ngrok-free.app/terms"
   },
   "name": {
     "short": "RepoDiffBot",
-    "full": "RepoDiff Teams Bot"
+    "full": "test"
   },
   "description": {
     "short": "Bot for RepoDiff",
@@ -25,12 +25,12 @@
   "accentColor": "#6264A7",
   "bots": [
     {
-      "botId": "ba8a89d8-b295-4320-8e6d-91d88e65085a",
-      "scopes": [ "personal", "team" ],
+      "botId": "12819db6-b20f-4ce9-88ff-59deec01990f",
+      "scopes": [ "personal" ],
       "supportsFiles": true,
       "isNotificationOnly": false
     }
   ],
   "permissions": [ "identity", "messageTeamMembers" ],
-  "validDomains": [ "fd59c923d1c5.ngrok-free.app" ]
+  "validDomains": [ "2a2059a1f319.ngrok-free.app" ]
 }
